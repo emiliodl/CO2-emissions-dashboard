@@ -52,7 +52,6 @@ emissions_by_type = make_filtered.groupby("Vehicle Class")["CO2 Emissions(g/km)"
 type_fig = px.bar(emissions_by_type, x="Vehicle Class", y="CO2 Emissions(g/km)", title=f"Emissão Média de CO2 por Tipo de Carro - {selected_make}")
 st.plotly_chart(type_fig)
 
-# Métricas Gerais
 total_emission = dataframe["CO2 Emissions(g/km)"].sum()
 st.metric("Emissão total", total_emission)
 
@@ -60,11 +59,9 @@ total_cars = len(dataframe)
 emission_average = round((total_emission / total_cars), 3)
 st.metric("Média da emissão", emission_average)
 
-# Dados Filtrados
 st.header("Dados Filtrados")
 st.dataframe(dataframe_filtrado)
 
-# Conjunto de Dados Completo
 st.markdown("---")
 st.header("Conjunto de Dados Completo")
 st.dataframe(dataframe)
